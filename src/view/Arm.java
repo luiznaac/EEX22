@@ -1,6 +1,7 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
 
 import application.MoveArm;
 import javafx.scene.Group;
@@ -33,8 +34,8 @@ public class Arm extends Group {
     getChildren().addAll(line);
   }
   
-  public void move(int angle) {
-    Runnable moveArm = new MoveArm(this, angle);
+  public void move(int angle, Lock lock) {
+    Runnable moveArm = new MoveArm(this, angle, lock);
     Thread t = new Thread(moveArm);
     moveThreads.add(t);
   }

@@ -1,8 +1,9 @@
 package controller;
 
 import java.util.ArrayList;
-
-import application.ThreadController;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import application.MoveController;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import view.Arm;
@@ -21,17 +22,22 @@ public class Controller {
     arm = new Arm(rail.getCORE(), rail.getCorePositionX(), moveThreads);
     rail.attachArm(arm);
     pnGraphic.getChildren().addAll(rail);
-    Runnable threadController = new ThreadController(moveThreads);
+    Runnable threadController = new MoveController(moveThreads);
     Thread t = new Thread(threadController);
     t.start();
     move();
   }
   
   public void move() {
-    rail.move(0, 100);
-    arm.move(45);
-    rail.move(0, 150);
-    arm.move(90);
+    Lock lock = new ReentrantLock();  
+    arm.move(0, lock);
+    rail.move(0, 200, lock);
+    arm.move(45, lock);
+    rail.move(0, 100, lock);
+    arm.move(90, lock);
+    rail.move(0, 450, lock);
+    arm.move(180, lock);
+    rail.move(0, 100, lock);
   }
   
 }
