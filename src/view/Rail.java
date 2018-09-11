@@ -50,8 +50,8 @@ public class Rail extends Group {
     getChildren().addAll(line, line2, base);
   }
   
-  public void move(int posX, int posY, Lock lock) {
-    Runnable moveRail = new MoveRail(this, posY, lock);
+  public void move(int posX, int posY) {
+    Runnable moveRail = new MoveRail(this, posY);
     Thread t = new Thread(moveRail);
     moveThreads.add(t);
   }

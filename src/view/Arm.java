@@ -34,8 +34,8 @@ public class Arm extends Group {
     getChildren().addAll(line);
   }
   
-  public void move(int angle, Lock lock) {
-    Runnable moveArm = new MoveArm(this, angle, lock);
+  public void move(int angle) {
+    Runnable moveArm = new MoveArm(this, angle);
     Thread t = new Thread(moveArm);
     moveThreads.add(t);
   }

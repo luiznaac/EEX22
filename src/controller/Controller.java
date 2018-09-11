@@ -1,8 +1,11 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import application.GlobalLock;
 import application.MoveController;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
@@ -29,15 +32,13 @@ public class Controller {
   }
   
   public void move() {
-    Lock lock = new ReentrantLock();  
-    arm.move(0, lock);
-    rail.move(0, 200, lock);
-    arm.move(45, lock);
-    rail.move(0, 100, lock);
-    arm.move(90, lock);
-    rail.move(0, 450, lock);
-    arm.move(180, lock);
-    rail.move(0, 100, lock);
+    Random rand = new Random();
+    GlobalLock.lock();
+    for(int i = 0 ; i < 15 ; i++) {
+      arm.move(rand.nextInt(90));
+      rail.move(0, rand.nextInt(300));
+    }
+    GlobalLock.unlock();
   }
   
 }
