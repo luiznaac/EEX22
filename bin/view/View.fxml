@@ -7,5 +7,24 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="500.0" prefWidth="600.0" fx:controller="controller.Controller">
-  <Pane fx:id="pnGraphic" prefHeight="500.0" prefWidth="500.0" />
+  <left>
+    <Pane fx:id="pnGraphic" prefHeight="500.0" prefWidth="500.0" />
+  </left>
+  <right>
+    <VBox>
+      <Label text="Trilho: " />
+      <TextField fx:id="tfTrail" onKeyPressed="#enter" />
+      <Label text="Base: " />
+      <TextField fx:id="tfBase" onKeyPressed="#enter" />
+      <Label text="Trilho: " />
+      <TextField fx:id="tfTrailDes" onKeyPressed="#enter" />
+      <Label text="Base: " />
+      <TextField fx:id="tfBaseDes" onKeyPressed="#enter" />
+      <Label text="Garra: " />
+      <TextField fx:id="tfArm" onKeyPressed="#enter" />
+      <Button fx:id="btCompute" text="Rolets" onAction="#compute" defaultButton="true" />
+      <Button fx:id="btComputePwm" text="Pwm" onAction="#computePwm"  />
+      <Button fx:id="btMagnet" text="Magnet" onAction="#magnet"  />
+    </VBox>
+  </right>
 </BorderPane>

@@ -1,14 +1,15 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.concurrent.locks.Lock;
-
-import application.MoveArm;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-public class Arm extends Group {
+/**
+ * VArm
+ * 
+ * @author Luiz
+ */
+public class VBase extends Group {
   
   private int ARM_LENGTH = 194;
   private int LENGTH_WITH_STROKE;
@@ -16,11 +17,9 @@ public class Arm extends Group {
   private int STROKE = 36;
   private int angle;
   private Line line;
-  private ArrayList<Thread> moveThreads;
   
-  public Arm(int CORE, int posX, ArrayList<Thread> moveThreads) {
+  public VBase(int CORE, int posX) {
     super();
-    this.moveThreads = moveThreads;
     this.CORE = CORE;
     angle = 90;
     LENGTH_WITH_STROKE = ARM_LENGTH - STROKE;
@@ -34,12 +33,6 @@ public class Arm extends Group {
     getChildren().addAll(line);
   }
   
-  public void move(int angle) {
-    Runnable moveArm = new MoveArm(this, angle);
-    Thread t = new Thread(moveArm);
-    moveThreads.add(t);
-  }
-
   public int getAngle() {
     return angle;
   }
