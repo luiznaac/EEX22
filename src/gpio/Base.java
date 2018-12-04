@@ -49,8 +49,8 @@ public class Base {
   }
   
   public static void initialize() {
-    motor.step(1019);
-    motor.step(-1019);
+    motor.step(200);
+    motor.step(-200);
   }
   
   public static void stepCW() {

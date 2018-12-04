@@ -49,10 +49,10 @@ public class Controller {
       pnGraphic.getChildren().addAll(rail);
       Runnable moveRail = new VMoveRail(com, rail);
       Thread tRail = new Thread(moveRail);
-      tRail.start();
+      //tRail.start();
       Runnable moveArm = new VMoveBase(com, arm);
       Thread tArm = new Thread(moveArm);
-      tArm.start();
+      //tArm.start();
     } catch(Exception E) {
       E.printStackTrace();
     }

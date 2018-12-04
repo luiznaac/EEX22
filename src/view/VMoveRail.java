@@ -1,7 +1,5 @@
 package view;
 
-import application.GlobalLock;
-import model.State;
 import remote.CommunicationInterface;
 
 /**

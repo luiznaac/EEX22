@@ -78,10 +78,10 @@ public class State implements Serializable {
       Runnable motorRail = new MotorRail(this, state.getPosY());
       Thread tRail = new Thread(motorRail);
       tRail.start();
+      tRail.join();
       Runnable motorBase = new MotorBase(this, state.getAngle());
       Thread tBase = new Thread(motorBase);
       tBase.start();
-      tRail.join();
       tBase.join();
       Runnable motorArm;
       if(state.isMagnet())
@@ -102,7 +102,6 @@ public class State implements Serializable {
     } catch(Exception E) {
       E.printStackTrace();
     }
-    System.out.println("Indo para posição default.");
     return defaultState();
   }
   
@@ -115,12 +114,11 @@ public class State implements Serializable {
       Runnable motorRail = new MotorRail(this, 0);
       Thread tRail = new Thread(motorRail);
       tRail.start();
-      Runnable motorBase = new MotorBase(this, 258);
+      tRail.join();
+      Runnable motorBase = new MotorBase(this, 0);
       Thread tBase = new Thread(motorBase);
       tBase.start();
-      tRail.join();
       tBase.join();
-      System.out.println("Na posição default.");
       Thread.sleep(1000);
       return true;
     } catch(Exception E) {

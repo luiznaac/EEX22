@@ -25,13 +25,13 @@ public class MotorBase implements Runnable {
       if(state.getAngle() < toAngle) {
         //GlobalLock.lock();
         Base.stepCW();
-        state.setAngle(state.getAngle()+1);
+        state.setAngle(state.getAngle()+2);
         //GlobalLock.unlock();
       }
       else if(state.getAngle() > toAngle) {
         //GlobalLock.lock();
         Base.stepCCW();
-        state.setAngle(state.getAngle()-1);
+        state.setAngle(state.getAngle()-2);
         //GlobalLock.unlock();
       }
       try {

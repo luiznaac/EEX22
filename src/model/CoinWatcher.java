@@ -13,15 +13,13 @@ public class CoinWatcher implements Runnable {
     while(true) {
       State[] nextState = CoinProcessor.getNext();
       if(nextState != null) {
-        System.out.println("Processando moeda.");
-        System.out.println("Pegando moeda.");
-        long init = System.currentTimeMillis();
+        CoinProcessor.toggleProcessing();
         if(state.changeState(nextState[0])) 
-          System.out.println("Transportando moeda. " + (System.currentTimeMillis() - init));
-          state.changeState(nextState[1]);
+          if(state.changeState(nextState[1]))
+            CoinProcessor.toggleProcessing();
       }
       try {
-        Thread.sleep(1000);
+        Thread.sleep(200);
       } catch (Exception E) {
         E.printStackTrace();
       }

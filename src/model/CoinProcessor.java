@@ -5,9 +5,11 @@ import java.util.ArrayList;
 public class CoinProcessor {
 
   private static ArrayList<Coin> coins;
+  private static boolean processing;
   
   static {
     coins = new ArrayList<>();
+    processing = false;
   }
   
   public static State[] getNext() {
@@ -24,8 +26,14 @@ public class CoinProcessor {
   }
   
   public static void newCoin(Coin coin) {
-    coins.add(coin);
-    System.out.println("Nova moeda.");
+    if(!processing) {
+      coins.add(coin);
+      System.out.println("Nova moeda.");
+    }
+  }
+  
+  public static void toggleProcessing() {
+    processing = !processing;
   }
   
 }

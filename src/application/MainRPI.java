@@ -20,7 +20,7 @@ public class MainRPI {
       System.out.println("Criando registro na porta 1099.");
       System.setProperty("java.rmi.server.hostname","169.254.218.142");
       LocateRegistry.createRegistry(1099);
-      State state = new State(0, 258, 180, false);
+      State state = new State(0, 0, 180, false);
       Remote communication = new Communication(state);
       System.out.println("Registro criado com sucesso.");
       // Insere a instância do ChatServer no registro

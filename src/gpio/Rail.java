@@ -24,8 +24,8 @@ public class Rail {
   
   public static void initialize() {
     try {
-      ed.move(1200, 1);
-      ed.move(-1200, 1);
+      ed.move(200, 1);
+      ed.move(-200, 1);
     }
     catch(Exception E) {
       E.printStackTrace();

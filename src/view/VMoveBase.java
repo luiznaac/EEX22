@@ -1,6 +1,5 @@
 package view;
 
-import application.GlobalLock;
 import remote.CommunicationInterface;
 
 /**
@@ -21,7 +20,7 @@ public class VMoveBase implements Runnable {
   
   @Override
   public void run() {
-    while(true) {
+    while(true) {         
       try {
         base.setAngle(com.getState().getAngle());
         Thread.sleep(4);

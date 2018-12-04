@@ -1,7 +1,6 @@
 package application;
 
 import gpio.Arm;
-import gpio.Base;
 import model.State;
 
 /**
